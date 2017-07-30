@@ -1,0 +1,18 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "<!DOCTYPE html> <html>   <head>     <meta charset=\"UTF-8\">     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">   </head>   <body>     <header>       <h1>RTCPvP EchoBack</h1>       <h2>リファレンス　ガイド</h2>     </header>     <article>       <ul>         <li><a href = './$d'></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>       </ul>     </article>   </body> </html> let $d = document; let $p = $d.documentElement; let $h = $d.head; let $b = $d.body; let PreRTC = window.webkitRTCPeerConnection ? window.webkitRTCPeerConnection : window.RTCPeerConnection; let RTCSDP = RTCSessionDescription;",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "ws": "^1.1.1",
+    "http": "^0.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Noboru Okazaki",
+  "license": "CC By"
+}
