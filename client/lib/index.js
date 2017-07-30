@@ -14,9 +14,7 @@
                 p.$(a.$("Reference is here")._({href: "https://github.com/johnny-shaman/de.js/wiki", target: "_blank"}))
             ]),
             
-            footer.$([
-                p.$(a.$("CC By Noboru Okazaki")._({href: "./license.html", target: "_blank"})),
-            ])
+            footer.$("MIT License")
         ]).css({width: "320px", margin: "auto"})
     ])
 )();
