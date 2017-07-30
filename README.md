@@ -1,5 +1,5 @@
 # de.js-webRTC-Template
-chat in WebRTC DataChannel Sample.
+Chat in WebRTC DataChannel Sample.
 
 ## Usage
 1. clone this repository;
