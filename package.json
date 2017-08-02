@@ -1,13 +1,10 @@
 {
-<<<<<<< HEAD
   "name": "package.json",
   "version": "0.1.5 test",
   "main": "index.js",
-=======
   "name": "de.js",
   "version": "0.1.5 test",
   "description": "<!DOCTYPE html> <html>   <head>     <meta charset=\"UTF-8\">     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">   </head>   <body>     <header>       <h1>RTCPvP EchoBack</h1>       <h2>リファレンス　ガイド</h2>     </header>     <article>       <ul>         <li><a href = './$d'></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>         <li></li>       </ul>     </article>   </body> </html> let $d = document; let $p = $d.documentElement; let $h = $d.head; let $b = $d.body; let PreRTC = window.webkitRTCPeerConnection ? window.webkitRTCPeerConnection : window.RTCPeerConnection; let RTCSDP = RTCSessionDescription;",
->>>>>>> d397728fe47fec8dd7676a8d9ec5aa1229746bfb
   "dependencies": {
     "cors": "^2.7.1",
     "express": "^4.13.4",
@@ -15,9 +12,5 @@
     "http": "^0.0.0"
   },
   "author": "Noboru Okazaki",
-<<<<<<< HEAD
-  "license": "GNU Public Lisence v3",
-=======
-  "license": "GNU Public License v3"
->>>>>>> d397728fe47fec8dd7676a8d9ec5aa1229746bfb
+  "license": "GNU Public Lisence v3"
 }
