@@ -1,0 +1,24 @@
+{
+  "name": "de_example",
+  "version": "0.1.5",
+  "description": "de.js WebRTC Example for Node.js EchoBack server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnny-shaman/de.js-webRTC-Template.git"
+  },
+  "keywords": [
+    "WebRTC",
+    "shorthand",
+    "shortcode"
+  ],
+  "author": "Noboru Okazaki",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/johnny-shaman/de.js-webRTC-Template/issues"
+  },
+  "homepage": "https://github.com/johnny-shaman/de.js-webRTC-Template#readme"
+}
