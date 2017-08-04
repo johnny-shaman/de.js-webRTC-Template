@@ -14,7 +14,7 @@
                 p.$(a.$("Reference is here")._({href: "https://github.com/johnny-shaman/de.js/wiki", target: "_blank"}))
             ]),
             
-            footer.$("MIT License")
+            footer.$("GPL-v3")
         ]).css({width: "320px", margin: "auto"})
     ])
 )();

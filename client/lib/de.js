@@ -1,5 +1,6 @@
 /*
 global
+    $,
     EventTarget,
     Event,
     Node,
@@ -17,12 +18,10 @@ global
     HTMLUListElement,
     HTMLOListElement,
     Option,
-    RTCPeerConnection,
-    RTCSessionDescription,
     Window,
     iframe,
     li,
-    events,
+    RTCDataChannel
 
     {
         eslint: {
@@ -57,7 +56,7 @@ global
         "string": (t) => is(t) === String,
         "there": (t) => t.length !== 0,
         "valid": (t) => !is.blank(t) && !is.nan(t) && is(t) !== t,
-        "self": (t) => is(t).prototype === t,
+        "self": (t) => is(t).de === t,
         "symbol": (t) => is(t) === Symbol
     });
 
@@ -100,29 +99,11 @@ global
 
     de.fine(de, {_: {value: de.configurable}});
 
-    de.fine(ir.prototype, {
-        each: de._({
-            value (cb) {
-                for (let v of this) {
-                    cb(v);
-                }
-                cb = null;
-                return this;
-            }
-        }),
-
-        _: de._({
-            get () {
-                return this.next;
-            }
-        })
-    });
-
     de.fine(Function.prototype, {
         keep: de._({
             get () {
                 return de.fine(
-                    this.prototype,
+                    this.de,
                     {constructor: de.writable({value: this})}
                 ) && this;
             }
@@ -130,7 +111,7 @@ global
 
         __: de._({
             value (p) {
-                de.fine(this.prototype, p);
+                de.fine(this.de, p);
                 p = null;
                 return this.keep;
             }
@@ -140,12 +121,12 @@ global
             value (p) {
                 switch (is(p)) {
                     case Object: {
-                        this.prototype = is.self(p) && Object.create(p) || this.prototype._(p);
+                        this.de = is.self(p) && Object.create(p) || this.de._(p);
                         break;
                     }
 
                     case Function: {
-                        this.prototype = Object.create(p.prototype);
+                        this.de = Object.create(p.de);
                         break;
                     }
                     default: break;
@@ -167,12 +148,42 @@ global
                 o = null;
                 return this;
             }
+        }),
+
+        de: de._({
+            get () {
+                return this.prototype;
+            },
+
+            set (v) {
+                this.prototype = v;
+                v = null;
+                return true;
+            }
+        })
+    });
+
+    de.fine(ir.de, {
+        each: de._({
+            value (cb) {
+                for (let v of this) {
+                    cb(v);
+                }
+                cb = null;
+                return this;
+            }
+        }),
+
+        _: de._({
+            get () {
+                return this.next;
+            }
         })
     });
 
     Object.__({
         __$__: de.writable({value: false}),
-
+        __length__: de.writable({value: 0}),
         $: de._({
             get () {
                 return this.__$__;
@@ -187,8 +198,10 @@ global
 
         _: de._({
             value (o) {
-                this.$ = is.held(o)(EventTarget) && o || false;
-                return is.pure(o) && Object.assign(this, o) || this;
+                is.held(o)(EventTarget) && (this.$ = o);
+                is.array(o) && (this.length = o.length);
+                is.pure(o) && Object.assign(this, o);
+                return this;
             }
         }),
 
@@ -212,7 +225,11 @@ global
 
         length: de._({
             get () {
-                return this.keys.length;
+                return this.__length__ !== false && this.__length__ || this.keys.length;
+            },
+
+            set (v) {
+                this.__length__ = v;
             }
         }),
 
@@ -256,7 +273,7 @@ global
 
         copy: de._({
             get () {
-                return Object.create(is(this).prototype, this.de);
+                return Object.create(is(this).de, this.de);
             }
         }),
 
@@ -318,7 +335,6 @@ global
 
         toArray: de._({
             get () {
-                is.valid(this.length) || this._({length: this.keys.length});
                 return Array.from(this);
             }
         }),
@@ -337,7 +353,6 @@ global
     });
 
     Array.__({
-        _: de._({value: Array.prototype.splice}),
         id: de._({
             value (t, s) {
                 let r = this.indexOf(t, s) === -1 && false || this.indexOf(t, s);
@@ -363,7 +378,7 @@ global
             }
         }),
 
-        kick: de._({value: Array.prototype.shift}),
+        kick: de._({value: Array.de.shift}),
 
         push: de._({
             value (v) {
@@ -461,21 +476,6 @@ global
                     p = null;
                     return this;
                 }
-            }),
-
-            say: de._({
-                value (v) {
-                    is.function(this.send) && this.send(
-                        is.string(v) && v || v.json
-                    );
-                    return this;
-                }
-            }),
-
-            hear: de._({
-                value (cb) {
-                    return this.on("message", cb);
-                }
             })
         });
 
@@ -483,11 +483,6 @@ global
             $: de._({
                 value (t) {
                     switch (is(t)) {
-                        case Object: {
-                            this.$(t.$);
-                            break;
-                        }
-
                         case Array || NodeList || HTMLCollection || ir: {
                             let ve = document.createDocumentFragment();
                             t.each((v) => ve.$(v));
@@ -505,7 +500,7 @@ global
                             break;
                         }
 
-                        default: this.append(t) || this;
+                        default: is.held(t)(Node) && !this.append(t) || this.append(t.$);
                     }
 
                     t = null;
@@ -751,7 +746,7 @@ global
                             this.append(ve);
                             break;
                         }
-                        default: Element.prototype.$.call(this, t);
+                        default: Element.de.$.call(this, t);
                     }
                     t = null;
                     return this;
@@ -775,7 +770,7 @@ global
                             this.append(ve);
                             break;
                         }
-                        default: Element.prototype.$.call(this, t);
+                        default: Element.de.$.call(this, t);
                     }
                     t = null;
                     return this;
@@ -870,6 +865,40 @@ global
 
             stream: de._({
                 value: {header: {"Content-Type": "text/stream; charset=utf-8"}}
+            })
+        });
+
+        WebSocket.__({
+            say: de._({
+                value (v) {
+                    is.function(this.send) && this.send(
+                        is.string(v) && v || v.json
+                    );
+                    return this;
+                }
+            }),
+
+            hear: de._({
+                value (cb) {
+                    return this.on("message", cb);
+                }
+            })
+        });
+
+        RTCDataChannel.__({
+            say: de._({
+                value (v) {
+                    is.function(this.send) && this.send(
+                        is.string(v) && v || v.json
+                    );
+                    return this;
+                }
+            }),
+
+            hear: de._({
+                value (cb) {
+                    return this.on("message", cb);
+                }
             })
         });
 

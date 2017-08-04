@@ -1,6 +1,6 @@
 {
-  "name": "de_example",
-  "version": "0.1.5.1",
+  "name": "de.js",
+  "version": "0.1.5",
   "description": "de.js WebRTC Example for Node.js EchoBack server",
   "main": "index.js",
   "scripts": {
@@ -32,7 +32,7 @@
   "readme": "# de.js-webRTC-Template\nChat in WebRTC DataChannel Sample.\n\n## Usage\n1. clone this repository;\n2. npm install\n3. run index.js\n\nAnd you can see a ./client/index.html on browser via node server;\n\nde.js preference.\nhttps://github.com/johnny-shaman/de.js/wiki\n",
   "readmeFilename": "README.md",
   "gitHead": "5ec114ee3de4ffe08606c586e5d97b7ff3488aaf",
-  "_id": "de_example@0.1.5",
-  "_shasum": "d51db1290c3c7553bd28d248c8157c86fc8720cf",
-  "_from": "de_example@latest"
+  "_id": "de.js@0.1.5",
+  "_shasum": "4dd8de7c1c1ad1925eff03abeee49125b29fad8c",
+  "_from": "de.js@latest"
 }
