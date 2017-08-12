@@ -99,6 +99,16 @@ global
 
     de.fine(de, {_: {value: de.configurable}});
 
+    let Wait = glb.Wait = (s, cb) => {
+        let t = setTimeout(cb, s);
+        return () => clearTimeout(t);
+    };
+
+    let Each = glb.Each = (s, cb) => {
+        let t = setInterval(cb, s);
+        return () => clearInterval(t);
+    };
+
     de.fine(Function.prototype, {
         keep: de._({
             get () {
@@ -171,12 +181,6 @@ global
                 }
                 cb = null;
                 return this;
-            }
-        }),
-
-        _: de._({
-            get () {
-                return this.next;
             }
         })
     });
@@ -902,16 +906,6 @@ global
             })
         });
 
-        let Wait = glb.Wait = (s, cb) => {
-            let t = setTimeout(cb, s);
-            return () => clearTimeout(t);
-        };
-
-        let Each = glb.Each = (s, cb) => {
-            let t = setInterval(cb, s);
-            return () => clearInterval(t);
-        };
-
         window.$ = Object.assign(window.$ && window.$ || ((q) => document.querySelectorAll(q).length === 1 &&
             document.querySelector(q) ||
             document.querySelectorAll(q)),
@@ -1017,4 +1011,4 @@ global
             return r;
         };
     })();
-})(window || process);
+})(process || window);

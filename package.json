@@ -1,6 +1,6 @@
 {
   "name": "de.js",
-  "version": "0.1.56",
+  "version": "0.1.57",
   "description": "de.js WebRTC Example for Node.js EchoBack server",
   "main": "index.js",
   "scripts": {
