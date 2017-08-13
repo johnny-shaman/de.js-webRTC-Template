@@ -30,10 +30,10 @@ global
     };
 */
 
-((glb) => {
+(() => {
     "use strict";
 
-    let is = glb.is = Object.assign((t) => {
+    let is = this.is = Object.assign((t) => {
         try {
             return t.constructor;
         } catch (e) {
@@ -63,7 +63,7 @@ global
     let gt = is(function* () {});
     let ir = is(function* () {}());
 
-    let de = glb.de = Object.create(null, {
+    let de = this.de = Object.create(null, {
         configurable: {
             value: (o) => Object.assign({
                 configurable: true
@@ -99,12 +99,12 @@ global
 
     de.fine(de, {_: {value: de.configurable}});
 
-    let Wait = glb.Wait = (s, cb) => {
+    let Wait = this.Wait = (s, cb) => {
         let t = setTimeout(cb, s);
         return () => clearTimeout(t);
     };
 
-    let Each = glb.Each = (s, cb) => {
+    let Each = this.Each = (s, cb) => {
         let t = setInterval(cb, s);
         return () => clearInterval(t);
     };
@@ -446,7 +446,7 @@ global
         })
     });
 
-    glb === window && (() => {
+    this === window && (() => {
         Event.__({
             $: de._({
                 get () {
@@ -1003,7 +1003,7 @@ global
             }
         });
 
-        let Socket = glb.Socket = function (uri = $.here, ssl = $.https) {
+        let Socket = this.Socket = function (uri = $.here, ssl = $.https) {
             uri === $.here || new XD(uri, ssl);
             let r = new WebSocket(ssl && "wss://" + uri || "ws://" + uri);
             uri = null;
@@ -1011,4 +1011,4 @@ global
             return r;
         };
     })();
-})(process || window);
+})();
