@@ -1,7 +1,7 @@
 {
   "name": "de.js",
-  "version": "0.1.58",
-  "description": "de.js WebRTC Example for Node.js EchoBack server",
+  "version": "0.1.6",
+  "description": "de.js WebRTC Template for Node.js EchoBack server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
