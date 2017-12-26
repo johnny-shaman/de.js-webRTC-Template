@@ -21,8 +21,8 @@ global
     Window,
     iframe,
     li,
-    RTCDataChannel
-
+    RTCDataChannel,
+    DataChannel
     {
         eslint: {
             dot-location: ["error", "property"]
@@ -30,9 +30,7 @@ global
     };
 */
 
-"use strict";
-
-let is = Object.assign((t) => {
+const is = Object.assign((t) => {
     try {
         return t.constructor;
     } catch (e) {
@@ -59,7 +57,7 @@ let is = Object.assign((t) => {
     "symbol": (t) => is(t) === Symbol
 });
 
-let de = Object.create(null, {
+const de = Object.create(null, {
     configurable: {
         value: (o) => Object.assign({
             configurable: true
@@ -108,9 +106,7 @@ let Each = (s, cb) => {
 de.fine(Function.prototype, {
     keep: de._({
         get () {
-            return de.fine(
-                this.de,
-                {constructor: de.writable({value: this})}
+            return de.fine(this.de, {constructor: de.writable({value: this})}
             ) && this;
         }
     }),
@@ -207,7 +203,7 @@ Object.__({
             is.held(o)(EventTarget) && (this.$ = o);
             is.array(o) && (this.length = o.length);
             is.pure(o) && Object.assign(this, o);
-            return this;
+            return is.function(o) && o(this) || this;
         }
     }),
 
@@ -240,19 +236,21 @@ Object.__({
     }),
 
     on: de._({
-        value (e) {
-            is.array(e) && e.each((v) => this.$.on(v, this));
-            is.string(e) && this.$ && this.$.on(e, this);
+        value (e, k) {
+            is.array(e) && is.held(this[k])(EventTarget) && e.each((v) => this[k].on(v, this)) || this.$ && e.each((v) => this.$.on(v, this));
+            is.string(e) && is.held(this[k])(EventTarget) && this[k].on(e, this) || this.$ && this.$.on(e, this);
             e = null;
+            k = null;
             return this;
         }
     }),
 
     off: de._({
-        value (e) {
-            is.array(e) && e.each((v) => this.$.off(v, this));
-            is.string(e) && this.$ && this.$.off(e, this);
+        value (e, k) {
+            is.array(e) && is.held(this[k])(EventTarget) && e.each((v) => this[k].off(v, this)) || this.$ && e.each((v) => this.$.off(v, this));
+            is.string(e) && is.held(this[k])(EventTarget) && this[k].off(e, this) || this.$ && this.$.off(e, this);
             e = null;
+            k = null;
             return this;
         }
     }),
@@ -393,6 +391,12 @@ Array.__({
             this[this.length] = v;
             v = null;
             return this;
+        }
+    }),
+
+    ap: de._({
+        value (a) {
+            return this.map((v) => a.map(v));
         }
     })
 });
@@ -893,7 +897,7 @@ is.valid(window) && (() => {
         })
     });
 
-    RTCDataChannel.__({
+    (RTCDataChannel || DataChannel).__({
         say: de._({
             value (v) {
                 is.function(this.send) && this.send(

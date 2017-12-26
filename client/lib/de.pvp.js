@@ -15,7 +15,7 @@ let PvP = function (
     this
     ._({
         cb,
-        signaling: new Socket(uri, ssl).hear(this)
+        signaling: new Socket(uri, ssl).on("message", this)
     })
     ._(
         new RTCPeerConnection({iceServers: l})
@@ -24,6 +24,7 @@ let PvP = function (
         "icecandidate",
         "datachannel"
     ]);
+
     cb = null;
     uri = null;
     ssl = null;
