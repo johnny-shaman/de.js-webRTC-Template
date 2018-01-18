@@ -1,32 +1,93 @@
 {
-  "name": "de.js",
-  "version": "0.1.6",
-  "description": "de.js WebRTC Template for Node.js EchoBack server",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "_args": [
+    [
+      {
+        "raw": "de.js",
+        "scope": null,
+        "escapedName": "de.js",
+        "name": "de.js",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/ubuntu/workspace"
+    ]
+  ],
+  "_from": "de.js@latest",
+  "_id": "de.js@0.1.7",
+  "_inCache": true,
+  "_location": "/de.js",
+  "_nodeVersion": "^4.7.3",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/de.js-0.1.7.tgz_1514269550904_0.5766857727430761"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/johnny-shaman/de.js-webRTC-Template.git"
+  "_npmUser": {
+    "name": "johnny_shaman",
+    "email": "johnny.shaman.saxophonist@gmail.com"
+  },
+  "_npmVersion": "^2.15.11",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "de.js",
+    "scope": null,
+    "escapedName": "de.js",
+    "name": "de.js",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/de.js/-/de.js-0.1.7.tgz",
+  "_shasum": "9d26c4dca49521ad954535c73f587a76382fb125",
+  "_shrinkwrap": null,
+  "_spec": "de.js",
+  "_where": "/home/ubuntu/workspace",
+  "author": {
+    "name": "Noboru Okazaki"
+  },
+  "bugs": {
+    "url": "https://github.com/johnny-shaman/de.js-webRTC-Template/issues"
   },
   "dependencies": {
     "cors": "^2.7.1",
     "express": "^4.13.4",
-    "ws": "^1.1.1",
-    "http": "^0.0.0"
+    "http": "^0.0.0",
+    "ws": "^1.1.1"
   },
+  "description": "de.js WebRTC Template for Node.js EchoBack server",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "9d26c4dca49521ad954535c73f587a76382fb125",
+    "tarball": "https://registry.npmjs.org/de.js/-/de.js-0.1.7.tgz"
+  },
+  "gitHead": "ba5db4d254d6ed39b526f5f8b845cf999a3c9c1f",
+  "homepage": "https://github.com/johnny-shaman/de.js-webRTC-Template#readme",
   "keywords": [
     "WebRTC",
     "shorthand",
     "shortcode"
   ],
-  "author": {
-    "name": "Noboru Okazaki"
-  },
   "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/johnny-shaman/de.js-webRTC-Template/issues"
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "johnny_shaman",
+      "email": "johnny.shaman.saxophonist@gmail.com"
+    }
+  ],
+  "name": "de.js",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnny-shaman/de.js-webRTC-Template.git"
   },
-  "homepage": "https://github.com/johnny-shaman/de.js-webRTC-Template#readme"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.7"
 }
