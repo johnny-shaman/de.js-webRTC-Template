@@ -17,7 +17,7 @@
   "_id": "de.js@0.1.7",
   "_inCache": true,
   "_location": "/de.js",
-  "_nodeVersion": "^4.7.3",
+  "_nodeVersion": "4.7.3",
   "_npmOperationalInternal": {
     "host": "s3://npm-registry-packages",
     "tmp": "tmp/de.js-0.1.7.tgz_1514269550904_0.5766857727430761"
@@ -26,7 +26,7 @@
     "name": "johnny_shaman",
     "email": "johnny.shaman.saxophonist@gmail.com"
   },
-  "_npmVersion": "^2.15.11",
+  "_npmVersion": "2.15.11",
   "_phantomChildren": {},
   "_requested": {
     "raw": "de.js",
